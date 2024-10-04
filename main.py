@@ -21,7 +21,8 @@ def get_text_message(message):
       bot.send_message(your_user_id, f"Юзернейм чата: @{chat_username}")
     prevchat = chat
   while True:
-    with open('text.txt', 'r', encoding='utf-8') as file:
-      bot.send_message(message.chat.id, file.read())
+    if message.chat.id != your_user_id:
+      with open('text.txt', 'r', encoding='utf-8') as file:
+        bot.send_message(message.chat.id, file.read())
 
 bot.polling(non_stop=True, interval=0)
